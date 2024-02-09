@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
     const [sortBy, setSortBy] = useState("input");
 
     let sortedItems;
@@ -26,6 +26,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
                         key={item.id}
                         onDeleteItem={onDeleteItem}
                         onToggleItem={onToggleItem}
+                        onClearList={onClearList}
                     />
                 ))}
             </ul>
@@ -38,6 +39,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
                     <option value="description">Sort by description</option>
                     <option value="packed">Sort by packed status</option>
                 </select>
+                <button onClick={() => onClearList(items)}>Clear list</button>
             </div>
         </div>
     );
